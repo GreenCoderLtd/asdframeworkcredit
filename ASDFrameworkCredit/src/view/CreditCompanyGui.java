@@ -15,71 +15,23 @@ import framework.component.FinanceHandler;
 import framework.component.IAccount;
 import framework.component.TxtReport;
 import framework.view.AGui;
+import framework.view.DefaultGui;
 import framework.view.JDialog_Deposit;
 import framework.view.JDialog_Withdraw;
 
-public class CreditCompanyGui extends AGui {
+public class CreditCompanyGui extends DefaultGui {
 
-	SymAction lSymAction;
-	DefaultTableModel model;
-	JButton JButton_PerAC;
-	JButton JButton_CompAC;
-	JButton JButton_Deposit;
-	JButton JButton_Withdraw;
-	JButton JButton_Addinterest;
-	JButton JButton_GenerateReport;
+	SymAction bankGuiActionListener=new SymAction();
+
 
 	public CreditCompanyGui(String title, FinanceHandler controller) {
 		super(title, controller);
-
-	}
-
-	public void generateCreationButtons() {
-		lSymAction = new SymAction();
-
-		JButton_PerAC = new JButton("Add personal account");
-		JButton_PerAC.setPreferredSize(new Dimension(BUTTON_WIDTH,
-				BUTTON_HEIGHT));
-		JButton_CompAC = new JButton("Add company account");
-		JButton_CompAC.setPreferredSize(new Dimension(BUTTON_WIDTH,
-				BUTTON_HEIGHT));
 		
-		JButton_GenerateReport = new JButton("Generate Report");
-		JButton_GenerateReport.setPreferredSize(new Dimension(BUTTON_WIDTH,
-				BUTTON_HEIGHT));
-
-		JButton_PerAC.addActionListener(lSymAction);
-		JButton_CompAC.addActionListener(lSymAction);
-		JButton_GenerateReport.addActionListener(lSymAction);
-
-		creationButtonPanel.add(JButton_PerAC);
-		creationButtonPanel.add(JButton_CompAC);
-		creationButtonPanel.add(JButton_GenerateReport);
-
-	}
-
-	public void generateOperationButtons() {
-
-		JButton_Deposit = new JButton("Deposit");
-		JButton_Deposit.setPreferredSize(new Dimension(BUTTON_WIDTH,
-				BUTTON_HEIGHT));
-		JButton_Withdraw = new JButton("Withdraw");
-		JButton_Withdraw.setPreferredSize(new Dimension(BUTTON_WIDTH,
-				BUTTON_HEIGHT));
+		JButton_PerAC.removeActionListener(defaultGuiActionListener);
+		JButton_PerAC.addActionListener(bankGuiActionListener);
 		
-		JButton_Addinterest = new JButton("Add Interest");
-		JButton_Addinterest.setPreferredSize(new Dimension(BUTTON_WIDTH,
-				BUTTON_HEIGHT));
-
-		JButton_Deposit.addActionListener(lSymAction);
-		JButton_Withdraw.addActionListener(lSymAction);
-		JButton_Addinterest.addActionListener(lSymAction);
-
-		operationButtonPanel.add(JButton_Deposit);
-		operationButtonPanel.add(Box.createVerticalStrut(V_GAP));
-		operationButtonPanel.add(JButton_Withdraw);
-		operationButtonPanel.add(Box.createVerticalStrut(V_GAP));
-		operationButtonPanel.add(JButton_Addinterest);
+		JButton_CompAC.removeActionListener(defaultGuiActionListener);
+		JButton_CompAC.addActionListener(bankGuiActionListener);
 
 	}
 
@@ -105,14 +57,8 @@ public class CreditCompanyGui extends AGui {
 				JButtonPerAC_actionPerformed(event);
 			else if (object == JButton_CompAC)
 				JButtonCompAC_actionPerformed(event);
-			else if (object == JButton_Deposit)
-				JButtonDeposit_actionPerformed(event);
-			else if (object == JButton_Withdraw)
-				JButtonWithdraw_actionPerformed(event);
-			else if (object == JButton_GenerateReport)
-				JButtonGenerateReport_actionPerformed(event);
-			else if (object == JButton_Addinterest)
-				JButtonAddinterest_actionPerformed(event);
+		
+			
 		}
 
 		
@@ -168,64 +114,6 @@ public class CreditCompanyGui extends AGui {
 
 	}
 	
-	private void JButtonAddinterest_actionPerformed(ActionEvent event) {
-		
-		controller.addInterest();
-		
-		modelUpdated();
-	}
-
-	void JButtonDeposit_actionPerformed(java.awt.event.ActionEvent event)
-	{
-		
-
-		int selection = JTable1.getSelectionModel().getMinSelectionIndex();
-		
-        if (selection >=0){
-            String accountNumber = (String)model.getValueAt(selection, 0);
-            
-		    //Show the dialog for adding deposit amount for the current mane
-            JDialog_Deposit dep = new JDialog_Deposit(myframe,accountNumber);
-		    dep.setBounds(430, 15, 275, 180);
-		    dep.show();
-        }
-    		
-
-		
-		
-	}
-
-	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
-	{
-	    // get selected name
-        int selection = JTable1.getSelectionModel().getMinSelectionIndex();
-        
-        if (selection >=0){
-            String accountNumber = (String)model.getValueAt(selection, 0);
-
-		    //Show the dialog for adding withdraw amount for the current mane
-            JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accountNumber);
-		    wd.setBounds(430, 15, 275, 180);
-		    wd.show();
-        }
-		   
-
-	}
-	
-	void JButtonGenerateReport_actionPerformed(java.awt.event.ActionEvent event)
-	{
-	    Date startDate=new Date("04/20/2015");
-	    
-		try {
-			getController().generateReport(startDate, new Date(), new TxtReport());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-		   
-
-	}
 
 
 
