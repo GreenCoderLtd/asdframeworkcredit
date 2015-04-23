@@ -4,9 +4,9 @@ import framework.component.DefaultTypeFactory;
 import framework.component.SimpleTypeFactory;
 import framework.component.TypeFactory;
 
-public class SimpleBankTypeFactory {
+public class SimpleCreditTypeFactory {
 
-	public static TypeFactory getBankTypeFactory()
+	public static TypeFactory getCreditTypeFactory()
 	{
 		return new CreditCardTypeFactory();
 	}
