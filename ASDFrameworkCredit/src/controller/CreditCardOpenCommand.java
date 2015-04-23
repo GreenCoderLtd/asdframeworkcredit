@@ -8,7 +8,7 @@ import framework.component.Account;
 import framework.component.AccountType;
 import framework.component.CompanyCustomer;
 import framework.component.Customer;
-import framework.component.FinanceHandler;
+import framework.component.FinanceSystem;
 import framework.component.IAccount;
 import framework.component.ICommand;
 import framework.component.ICustomer;
@@ -16,12 +16,12 @@ import framework.component.PersonalCustomer;
 
 public class CreditCardOpenCommand implements ICommand {
 
-	FinanceHandler controller;
+	FinanceSystem controller;
 	HashMap<String, String> guiData;
 	AccountType accountType;
 	double notifiAmount = 400;
 	
-	public CreditCardOpenCommand(FinanceHandler controller,
+	public CreditCardOpenCommand(FinanceSystem controller,
 			HashMap<String, String> guiData, AccountType accountType) {
 		this.controller = controller;
 		this.guiData = guiData;

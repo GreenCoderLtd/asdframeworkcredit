@@ -15,7 +15,7 @@ import controller.CreditCardReport;
 import framework.component.Account;
 import framework.component.CreditCommand;
 import framework.component.DebitCommand;
-import framework.component.FinanceHandler;
+import framework.component.FinanceSystem;
 import framework.component.IAccount;
 import framework.component.ITransactionCommand;
 import framework.component.TxtReport;
@@ -28,7 +28,7 @@ public class CreditCompanyGui extends DefaultGui {
 	SymAction bankGuiActionListener=new SymAction();
 
 
-	public CreditCompanyGui(String title, FinanceHandler controller) {
+	public CreditCompanyGui(String title, FinanceSystem controller) {
 		super(title, controller);
 		
 		JButton_PerAC.removeActionListener(defaultGuiActionListener);

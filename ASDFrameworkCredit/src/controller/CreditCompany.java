@@ -1,7 +1,7 @@
 package controller;
 
 import view.CreditCompanyGui;
-import framework.component.FinanceHandler;
+import framework.component.FinanceSystem;
 import framework.model.DefaultModel;
 import framework.model.IModel;
 import framework.view.AGui;
@@ -11,7 +11,7 @@ public class CreditCompany {
 	
 	public static void main(String[] Args)
 	{
-		FinanceHandler finance=new FinanceHandler();
+		FinanceSystem finance=new FinanceSystem();
 		
 		IModel model=new DefaultModel();
 		

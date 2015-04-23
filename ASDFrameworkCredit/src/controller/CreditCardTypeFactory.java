@@ -1,19 +1,19 @@
 package controller;
 
 import framework.component.AccountType;
-import framework.component.TypeFactory;
+import framework.component.AccountTypeFactory;
 
-public class CreditCardTypeFactory extends TypeFactory {
+public class CreditCardTypeFactory extends AccountTypeFactory {
 
 	@Override
-	public String[] getTypes() {
+	public String[] getAccountTypes() {
 		// TODO Auto-generated method stub
 		return new String[]{"golden","silver","bronze"};
 		
 	}
 
 	@Override
-	public AccountType getType(String typeName) {
+	public AccountType getAccountType(String typeName) {
 		
 		if(typeName.equals(CreditCardType.CREDIT_CARD_GOLD))
 		{

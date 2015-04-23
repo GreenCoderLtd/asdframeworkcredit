@@ -60,7 +60,7 @@ public class AddCreditCardWindow extends JDialogAddAccount
 	public void generateTypeRadioButtons()
 	{
 		int yPosition=1;
-		String[] types=SimpleCreditTypeFactory.getCreditTypeFactory().getTypes();
+		String[] types=SimpleCreditTypeFactory.getCreditTypeFactory().getAccountTypes();
 		
 		ButtonGroup bG = new ButtonGroup();
 	   
@@ -131,7 +131,7 @@ public class AddCreditCardWindow extends JDialogAddAccount
 			
 			String type=getAccountTypeSelected();
 			
-			command=new CreditCardOpenCommand(parentframe.getController(), guiData,SimpleCreditTypeFactory.getCreditTypeFactory().getType(type));
+			command=new CreditCardOpenCommand(parentframe.getController(), guiData,SimpleCreditTypeFactory.getCreditTypeFactory().getAccountType(type));
 			command.exceute();
 			
 			parentframe.modelUpdated();
